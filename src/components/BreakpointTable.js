@@ -68,6 +68,7 @@ export const BreakpointTable = {
         <table>
           <thead>
             <tr>
+              <th>{{ t("table.columns.tier") }}</th>
               <th>{{ t("table.columns.tick") }}</th>
               <th>{{ t("table.columns.actualCooldown") }}</th>
               <th>{{ t("table.columns.requiredCdr") }}</th>
@@ -77,6 +78,7 @@ export const BreakpointTable = {
           </thead>
           <tbody v-if="visibleRows.length">
             <tr v-for="row in visibleRows" :key="row.tickCount">
+              <td>{{ t("results.tierValue", row.tierIndex) }}</td>
               <td>{{ row.tickCount }}</td>
               <td>{{ formatters.seconds(row.actualCooldown, 3) }}</td>
               <td>{{ formatters.percent(row.requiredCdr) }}</td>
@@ -86,7 +88,7 @@ export const BreakpointTable = {
           </tbody>
           <tbody v-else>
             <tr>
-              <td colspan="5" class="table-placeholder">{{ t("table.placeholder") }}</td>
+              <td colspan="6" class="table-placeholder">{{ t("table.placeholder") }}</td>
             </tr>
           </tbody>
         </table>

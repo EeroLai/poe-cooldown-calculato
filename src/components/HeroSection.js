@@ -11,28 +11,27 @@ export const HeroSection = {
   emits: ["set-locale", "apply-preset"],
   template: `
     <header class="hero">
+      <div class="locale-switch hero__locale" role="group" :aria-label="t('hero.languageLabel')">
+        <button
+          type="button"
+          class="locale-switch__button"
+          :class="{ 'is-active': locale === 'zh-TW' }"
+          @click="$emit('set-locale', 'zh-TW')"
+        >
+          繁中
+        </button>
+        <button
+          type="button"
+          class="locale-switch__button"
+          :class="{ 'is-active': locale === 'en' }"
+          @click="$emit('set-locale', 'en')"
+        >
+          EN
+        </button>
+      </div>
+
       <div class="hero__copy">
-        <div class="hero__topbar">
-          <p class="eyebrow">{{ t("hero.eyebrow") }}</p>
-          <div class="locale-switch" role="group" :aria-label="t('hero.languageLabel')">
-            <button
-              type="button"
-              class="locale-switch__button"
-              :class="{ 'is-active': locale === 'zh-TW' }"
-              @click="$emit('set-locale', 'zh-TW')"
-            >
-              繁中
-            </button>
-            <button
-              type="button"
-              class="locale-switch__button"
-              :class="{ 'is-active': locale === 'en' }"
-              @click="$emit('set-locale', 'en')"
-            >
-              EN
-            </button>
-          </div>
-        </div>
+        <p class="eyebrow">{{ t("hero.eyebrow") }}</p>
 
         <h1>{{ t("hero.title") }}</h1>
         <p class="hero__text">{{ t("hero.description") }}</p>
@@ -59,10 +58,6 @@ export const HeroSection = {
         <div class="info-pill">
           <span>{{ t("hero.pills.safeAps") }}</span>
           <strong>{{ t("hero.pills.safeApsValue") }}{{ Math.round(Number(safetyRatio || 0) * 100) }}%</strong>
-        </div>
-        <div class="info-pill">
-          <span>{{ t("hero.pills.live") }}</span>
-          <strong>{{ t("hero.pills.liveValue") }}</strong>
         </div>
       </div>
     </header>

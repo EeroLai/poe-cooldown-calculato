@@ -3,7 +3,6 @@ import { HeroSection } from "./components/HeroSection.js";
 import { InputPanel } from "./components/InputPanel.js";
 import { ResultsPanel } from "./components/ResultsPanel.js";
 import { BreakpointTable } from "./components/BreakpointTable.js";
-import { TipsPanel } from "./components/TipsPanel.js";
 import { presets } from "./constants/presets.js";
 import { messages } from "./i18n/messages.js";
 import { calculate } from "./utils/calculator.js";
@@ -43,7 +42,6 @@ export const App = {
     InputPanel,
     ResultsPanel,
     BreakpointTable,
-    TipsPanel,
   },
   setup() {
     const state = reactive({
@@ -155,26 +153,28 @@ export const App = {
         @apply-preset="applyPreset"
       />
 
-      <main class="layout">
-        <input-panel
-          :form="state.form"
-          :t="t"
-          @update-field="updateField"
-        />
+      <main class="dashboard">
+        <section class="dashboard__primary">
+          <input-panel
+            :form="state.form"
+            :t="t"
+            @update-field="updateField"
+          />
 
-        <results-panel
-          :result="result"
-          :t="t"
-          :formatters="formatters"
-        />
+          <breakpoint-table
+            :result="result"
+            :t="t"
+            :formatters="formatters"
+          />
+        </section>
 
-        <breakpoint-table
-          :result="result"
-          :t="t"
-          :formatters="formatters"
-        />
-
-        <tips-panel :t="t" />
+        <aside class="dashboard__secondary">
+          <results-panel
+            :result="result"
+            :t="t"
+            :formatters="formatters"
+          />
+        </aside>
       </main>
     </div>
   `,

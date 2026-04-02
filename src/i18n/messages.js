@@ -2,7 +2,7 @@ export const messages = {
   "zh-TW": {
     hero: {
       eyebrow: "Path of Exile 工具",
-      title: "Cooldown / Tick / APS 一頁算清楚",
+      title: "POE 冷卻檔位計算",
       description:
         "輸入技能冷卻與 CDR，立刻看出你現在吃到哪個 tick 檔位、離下一檔還差多少，以及這個檔位下該把攻速壓在哪。",
       presetLabel: "快速模式",
@@ -17,8 +17,6 @@ export const messages = {
         tick: "Tick",
         safeAps: "Safe APS",
         safeApsValue: "預設 ",
-        live: "即時更新",
-        liveValue: "無需送出",
       },
     },
     input: {
@@ -46,29 +44,27 @@ export const messages = {
     },
     results: {
       eyebrow: "計算結果",
-      title: "目前檔位分析",
+      title: "檔位分析",
       cards: {
         theoreticalCooldown: "理論冷卻",
         tickCount: "實際 Tick",
         actualCooldown: "實際冷卻",
-        dilutionState: "Tick 稀釋",
         requiredCdr: "下一檔所需 CDR",
-        cdrGap: "距離下一檔",
         maxAps: "最大 APS",
         safeAps: "安全 APS",
         attackTime: "建議 Attack Time",
       },
       details: {
         currentTier: "目前檔位",
-        nextTier: "下一檔",
-        targetCooldown: "下一檔目標冷卻",
+        requiredCdr: "下一檔所需 CDR",
+        nextTierAps: "下一檔所需 APS",
       },
+      tierValue: "第 {value} 檔",
       tickValue: "{value} Tick",
       dilutedYes: "有，被 tick 稀釋",
       dilutedNo: "否，剛好命中檔位",
       noShorterTick: "已到最短 Tick",
       noNextTier: "無下一檔",
-      alreadyReached: "已達成",
       none: "無",
     },
     status: {
@@ -78,11 +74,11 @@ export const messages = {
       },
       onPoint: {
         title: "目前理論值已精準命中檔位",
-        text: "你現在位於 {value} Tick，理論冷卻與實際冷卻幾乎一致，可以專注確認 APS 是否超線。",
+        text: "你現在位於 {value}，理論冷卻與實際冷卻幾乎一致，可以專注確認 APS 是否超線。",
       },
       ready: {
         title: "你的 CDR 已足夠進下一檔",
-        text: "目前計算仍顯示在 {value} Tick，代表可能只差攻速或實戰條件設定，值得再對照角色配置。",
+        text: "目前計算仍顯示在 {value}，代表可能只差攻速或實戰條件設定，值得再對照角色配置。",
       },
       diluted: {
         title: "目前仍被 Tick 稀釋",
@@ -94,6 +90,7 @@ export const messages = {
       eyebrow: "檔位表",
       title: "Breakpoint Overview",
       columns: {
+        tier: "檔位",
         tick: "Tick",
         actualCooldown: "實際冷卻",
         requiredCdr: "需要 CDR",
@@ -139,7 +136,7 @@ export const messages = {
   en: {
     hero: {
       eyebrow: "Path of Exile Tool",
-      title: "See Cooldown, Tick, and APS at a Glance",
+      title: "POE Cooldown Breakpoints",
       description:
         "Enter your base cooldown and CDR to see your current tick breakpoint, how far you are from the next tier, and where your attack speed should stay.",
       presetLabel: "Quick presets",
@@ -154,8 +151,6 @@ export const messages = {
         tick: "Tick",
         safeAps: "Safe APS",
         safeApsValue: "Default ",
-        live: "Live update",
-        liveValue: "No submit needed",
       },
     },
     input: {
@@ -183,29 +178,27 @@ export const messages = {
     },
     results: {
       eyebrow: "Results",
-      title: "Current Breakpoint Analysis",
+      title: "Breakpoint Analysis",
       cards: {
         theoreticalCooldown: "Theoretical cooldown",
         tickCount: "Actual ticks",
         actualCooldown: "Actual cooldown",
-        dilutionState: "Tick dilution",
         requiredCdr: "CDR needed for next tier",
-        cdrGap: "Gap to next tier",
         maxAps: "Max APS",
         safeAps: "Safe APS",
         attackTime: "Suggested attack time",
       },
       details: {
         currentTier: "Current tier",
-        nextTier: "Next tier",
-        targetCooldown: "Next tier target cooldown",
+        requiredCdr: "CDR needed for next tier",
+        nextTierAps: "Required APS for next tier",
       },
+      tierValue: "Tier {value}",
       tickValue: "{value} Tick",
       dilutedYes: "Yes, diluted by server ticks",
       dilutedNo: "No, it lands on the breakpoint",
       noShorterTick: "Already at the shortest tick",
       noNextTier: "No next tier",
-      alreadyReached: "Reached",
       none: "None",
     },
     status: {
@@ -215,11 +208,11 @@ export const messages = {
       },
       onPoint: {
         title: "Your theoretical cooldown matches the breakpoint",
-        text: "You are currently at {value} Tick, and the theoretical cooldown is effectively aligned with the actual cooldown. You can now focus on staying under the APS cap.",
+        text: "You are currently at {value}, and the theoretical cooldown is effectively aligned with the actual cooldown. You can now focus on staying under the APS cap.",
       },
       ready: {
         title: "Your CDR is already enough for the next tier",
-        text: "The calculator still shows {value} Tick, so you may only be limited by APS or practical setup details.",
+        text: "The calculator still shows {value}, so you may only be limited by APS or practical setup details.",
       },
       diluted: {
         title: "Your cooldown is still diluted by ticks",
@@ -232,6 +225,7 @@ export const messages = {
       eyebrow: "Breakpoint Table",
       title: "Breakpoint Overview",
       columns: {
+        tier: "Tier",
         tick: "Tick",
         actualCooldown: "Actual cooldown",
         requiredCdr: "Required CDR",
