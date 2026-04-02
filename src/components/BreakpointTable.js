@@ -5,6 +5,16 @@ export const BreakpointTable = {
     t: { type: Function, required: true },
     formatters: { type: Object, required: true },
   },
+  data() {
+    return {
+      isExpanded: false,
+    };
+  },
+  watch: {
+    result() {
+      this.isExpanded = false;
+    },
+  },
   computed: {
     rows() {
       if (!this.result) {
@@ -36,6 +46,16 @@ export const BreakpointTable = {
         };
       });
     },
+    visibleRows() {
+      if (this.isExpanded || this.rows.length <= 8) {
+        return this.rows;
+      }
+
+      const currentIndex = this.rows.findIndex((row) => row.tickCount === this.result.tickCount);
+      const start = Math.max(0, Math.min(currentIndex - 3, this.rows.length - 8));
+
+      return this.rows.slice(start, start + 8);
+    },
   },
   template: `
     <section class="panel panel--table" aria-labelledby="table-title">
@@ -55,8 +75,8 @@ export const BreakpointTable = {
               <th>{{ t("table.columns.status") }}</th>
             </tr>
           </thead>
-          <tbody v-if="rows.length">
-            <tr v-for="row in rows" :key="row.tickCount">
+          <tbody v-if="visibleRows.length">
+            <tr v-for="row in visibleRows" :key="row.tickCount">
               <td>{{ row.tickCount }}</td>
               <td>{{ formatters.seconds(row.actualCooldown, 3) }}</td>
               <td>{{ formatters.percent(row.requiredCdr) }}</td>
@@ -70,6 +90,12 @@ export const BreakpointTable = {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div v-if="rows.length > 8" class="panel__footer">
+        <button type="button" class="ghost-button" @click="isExpanded = !isExpanded">
+          {{ isExpanded ? t("table.actions.collapse") : t("table.actions.expand") }}
+        </button>
       </div>
     </section>
   `,

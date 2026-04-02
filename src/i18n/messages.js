@@ -108,6 +108,10 @@ export const messages = {
         cleared: "已可達",
         future: "未達成",
       },
+      actions: {
+        expand: "顯示完整檔位表",
+        collapse: "收合檔位表",
+      },
     },
     tips: {
       eyebrow: "說明",
@@ -241,6 +245,10 @@ export const messages = {
         ready: "Ready for next",
         cleared: "Reachable",
         future: "Not reached",
+      },
+      actions: {
+        expand: "Show full table",
+        collapse: "Collapse table",
       },
     },
     tips: {
